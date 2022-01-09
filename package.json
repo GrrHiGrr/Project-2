@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express-handlebars": "^6.0.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.12"
+  }
+}

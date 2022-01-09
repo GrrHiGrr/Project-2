@@ -1,0 +1,65 @@
+[
+    {
+      "name": "Tanjiro",
+      "email": "hinokamikagura@hotmail.com",
+      "password": "password12345",
+      "city": "okutama",
+      "state": "kanto"
+    },
+    {
+      "name": "Inosuke",
+      "email": "fightmeyoucoward@hotmail.com",
+      "password": "password12345",
+      "city": "odakeyama",
+      "state": "kanto"
+    },
+    {
+      "name": "Nezuko",
+      "email": "mmmhmmrrrrmmmmm@hotmail.com",
+      "password": "password12345",
+      "city": "okutama",
+      "state": "kanto"
+    },
+    {
+        "name": "Zenitsu",
+        "email": "zzzzzzzzz@hotmail.com",
+        "password": "password12345",
+        "city": "shinjuku",
+        "state": "kanto"
+      },
+      {
+        "name": "Kyojuro",
+        "email": "setyourheartablaze@hotmail.com",
+        "password": "password12345",
+        "city": "setagaya",
+        "state": "kanto"
+      },
+      {
+        "name": "Muzan",
+        "email": "michaeljackson@hotmail.com",
+        "password": "password12345",
+        "city": "tokyo",
+        "state": "kanto"
+      },
+      {
+        "name": "Tengen",
+        "email": "timetogetflashy@hotmail.com",
+        "password": "password12345",
+        "city": "yoshiwara",
+        "state": "kanto"
+      },
+      {
+        "name": "Obanai",
+        "email": "no1mitsurifan@hotmail.com",
+        "password": "password12345",
+        "city": "hachijojima",
+        "state": "kanto"
+      },
+      {
+        "name": "Akaza",
+        "email": "lolgotyourheart@hotmail.com",
+        "password": "password12345",
+        "city": "unknown",
+        "state": "kanto"
+      }
+  ]
