@@ -1,57 +1,57 @@
 [
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "nasus",
+        "species": "dog",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "neeko",
+        "species": "lizard",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "yuumi",
+        "species": "cat",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "renekton",
+        "species": "alligator",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "rammus",
+        "species": "armordillo",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "zac",
+        "species": "?????",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "hecarim",
+        "species": "centaur",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "anivia",
+        "species": "bird",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "voli",
+        "species": "bear",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "rengar",
+        "species": "kitty",
+        "birthday": "1999-01-01"
     },
     {
-        "name": "",
-        "species": "",
-        "birthday": "",
+        "name": "kha'zix",
+        "species": "nightmare",
+        "birthday": "1999-01-01"
     }
 ]

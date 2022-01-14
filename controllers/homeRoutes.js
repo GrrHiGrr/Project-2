@@ -1,0 +1,103 @@
+const router = require('express').Router();
+const { Pet, User } = require('../models');
+const withAuth = require('../utils/auth');
+const axios = require("axios")
+
+router.get('/', async (req, res) => {
+  try {
+    const petData = await Pet.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['id'],
+        },
+      ],
+    });
+
+    const pets = petData.map((project) => pet.get({ plain: true }));
+
+    res.render('homepage', { 
+      pets, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/pet/:name', async (req, res) => {
+  try {
+    const petData = await Pet.findByPk(req.params.name, {
+      include: [
+        {
+          model: User,
+          attributes: ['id'],
+        },
+      ],
+    });
+
+    const pet = petData.get({ plain: true });
+
+    res.render('pet', {
+      ...pet,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/pets', async (req,res)=> {
+    const GoogleAPIURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + "irvine" + "," + "ca" + "&key=" + "AIzaSyBbd_CQADqbRBO4N3Ur6uqIiI24ioa0T9E";
+    const results = await axios.get(GoogleAPIURL)
+    console.log (results.data.results[0].geometry.location)
+    res.render("pets")
+})
+
+router.get('/info', async (req,res)=> {
+  res.render("info")
+})
+
+router.get('/lfp', async (req,res)=> {
+  res.render("lfp")
+})
+
+router.get('/posts', async (req,res)=> {
+  res.render("posts")
+})
+
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Pet }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/register', async (req, res) => {
+  res.render('register')
+})
+router.get('/find', async (req, res) => {
+  res.render('find')
+})
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('login');
+});
+
+module.exports = router;
