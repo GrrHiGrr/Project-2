@@ -23,6 +23,6 @@ const seeder = () => {
 })
 };
 
-seeder();
+// seeder();
 
 module.exports = seeder;
