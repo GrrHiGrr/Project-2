@@ -1,4 +1,4 @@
-const { User } = require("../../models");
+const { User, Pet } = require("../../models");
 const axios = require("axios");
 const router = require('express').Router();
 
