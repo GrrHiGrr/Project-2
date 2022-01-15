@@ -14,9 +14,11 @@ const router = require('express').Router();
       password:req.body.password,
       location
     });
+
+    req.session.user = newUser.id;
+    req.session.loggedIn = true;
+
     req.session.save(() => {
-      req.session.user = newUser.id;
-      req.session.loggedIn = true;
       return res.json(newUser);
     });
   })
@@ -42,14 +44,14 @@ try {
         Math.sin(dLong / 2) * Math.sin(dLong / 2);
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       var d = R * c;
-      return d; // returns the distance in meter
+      return d/1610; // returns the distance in meter converted to mi
     };
 
     const GoogleAPIURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.body.city + "," + req.body.state + "&key=" + "AIzaSyBbd_CQADqbRBO4N3Ur6uqIiI24ioa0T9E";
     const results = await axios.get(GoogleAPIURL)
     console.log (results.data.results[0].geometry.location)
     const location = results.data.results[0].geometry.location
-    const allUsers = await User.findAll()
+    const allUsers = await User.findAll({include: [{model:Pet}]})
     console.log(allUsers)
     let allUsersPlain = allUsers.map((userData, i) => {
       return userData.get({ plain: true })
@@ -86,8 +88,13 @@ try {
     const isPasswordCorrect = user.checkPassword(req.body.password);
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Incorrect password" });
+      req.session.user = user.id;
+      req.session.loggedIn = true;
+  
+      req.session.save(() => {
+        return res.json(user);
+      });
 
-    res.json(user);
   })
 
   module.exports = router;

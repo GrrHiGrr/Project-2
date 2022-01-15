@@ -47,8 +47,24 @@ router.get('/pet/:name', async (req, res) => {
   }
 });
 
+
+router.get('/petregister', async (req,res)=> {
+  res.render("petregister")
+});
+
+router.post("/petregister", async(req,res)=> {
+  //get the payload, get user info from session, create db record.
+  console.log("payload", req.body);
+  console.log("session", req.session);
+  const pet = await Pet.create({
+    ...req.body,
+    user_id: req.session.user
+  });
+  res.json(pet);
+})
+
 router.get('/pets', async (req,res)=> {
-    const GoogleAPIURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + "irvine" + "," + "ca" + "&key=" + "AIzaSyBbd_CQADqbRBO4N3Ur6uqIiI24ioa0T9E";
+    const GoogleAPIURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.body.city + "," + req.body.state + "&key=" + "AIzaSyBbd_CQADqbRBO4N3Ur6uqIiI24ioa0T9E";
     const results = await axios.get(GoogleAPIURL)
     console.log (results.data.results[0].geometry.location)
     res.render("pets")
@@ -58,28 +74,22 @@ router.get('/info', async (req,res)=> {
   res.render("info")
 })
 
-router.get('/lfp', async (req,res)=> {
-  res.render("lfp")
-})
-
-router.get('/posts', async (req,res)=> {
-  res.render("posts")
-})
 
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.user, {
       attributes: { exclude: ['password'] },
       include: [{ model: Pet }],
     });
 
     const user = userData.get({ plain: true });
-
+    console.log("user",user)
     res.render('profile', {
       ...user,
       logged_in: true
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
@@ -92,7 +102,7 @@ router.get('/find', async (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/profile');
     return;
   }
