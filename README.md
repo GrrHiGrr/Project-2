@@ -19,6 +19,9 @@ Deployed at https://looking-for-pets.herokuapp.com/
 GitHub repository located at https://github.com/GrrHiGrr/Project-2
 
 
+![image](https://user-images.githubusercontent.com/90295289/149634751-cbc8b618-83b5-4200-8c2a-0ab27054ed25.png)
+
+
 
 Further development plans: 
 
