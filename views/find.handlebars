@@ -41,15 +41,16 @@
                             </div>
                             <button id="submit" type="submit"
                                 class="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide text-teal-400 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none">Submit</button>
-                        </form>
+                        </form>  
                     </div>
+                        <div class="petcards-container -mx-3 mb-6"></div>
                 </a>
             </div>
         </div>
-                
+     
     </div>
-    <div class="petcards-container"></div>
 </div>
+
 
 <script>
 
@@ -71,9 +72,8 @@
 
         pets.forEach(pet => {
             petDivContent += `
-            <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-                <div class="rounded bg-teal-200 overflow-hidden shadow-lg">
-                    <img class="w-full" src="/img/card-top.jpg" alt="pet-name">
+                <div class="max-w-sm rounded flex-1 shadow-lg bg-teal-400 -mx-3 mb-6">
+                    <img class="w-full" src="https://i.imgur.com/AMAw5EK.png" alt="pet-name">
                         <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2">Owner Name - ${pet.owner}</div>
                         </div>

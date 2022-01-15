@@ -48,8 +48,23 @@ router.get('/pet/:name', async (req, res) => {
 });
 
 
-router.get('/petregister', async (req,res)=> {
-  res.render("petregister")
+router.get('/petregister', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Pet }],
+    });
+
+    const user = userData.get({ plain: true });
+    console.log("user",user)
+    res.render('petregister', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
 });
 
 router.post("/petregister", async(req,res)=> {
