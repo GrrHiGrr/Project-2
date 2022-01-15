@@ -5,14 +5,15 @@ const sequelize = require("../config/connection");
 
 const chunk = 500;
 
+const seeder = () => {
 
-sequelize.sync({force:true}).then(async ()=> {
-    for(let i = 0; i< userData.length; i+=chunk){
-        console.log("working on users chunk ", i)
+    sequelize.sync({force:true}).then(async ()=> {
+        for(let i = 0; i< userData.length; i+=chunk){
+            console.log("working on users chunk ", i)
         const dataChunk = userData.slice(i, i+ chunk);
         const users = await User.bulkCreate(dataChunk);
     }
-
+    
     for(let i = 0; i< petData.length; i+=chunk){
         console.log("working on pets chunk ", i);
         const dataChunk = petData.slice(i, i+chunk)
@@ -20,3 +21,8 @@ sequelize.sync({force:true}).then(async ()=> {
     }
     return console.log("success!")
 })
+};
+
+seeder();
+
+module.exports = seeder;
