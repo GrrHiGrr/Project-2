@@ -8,7 +8,8 @@
     "tailwind-build": "npx tailwindcss -o ./public/css/index.css --watch",
     "dev": "nodemon server",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "heroku-postbuild": "npm run seed"
   },
   "keywords": [],
   "author": "",
