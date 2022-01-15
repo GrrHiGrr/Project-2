@@ -17,7 +17,7 @@
                                     </label>
                                     <input
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                        id="city" type="text" placeholder="Mobile">
+                                        id="city" type="text" placeholder="New York">
                                 </div>
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -26,7 +26,7 @@
                                     </label>
                                     <input
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="state" type="text" placeholder="AL">
+                                        id="state" type="text" placeholder="NY">
                                 </div>
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -35,7 +35,7 @@
                                     </label>
                                     <input
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="distance" type="text" placeholder="100">
+                                        id="distance" type="text" placeholder="15">
                                 </div>
 
                             </div>
@@ -46,8 +46,9 @@
                 </a>
             </div>
         </div>
-                <div class="petcards-container"></div>
+                
     </div>
+    <div class="petcards-container"></div>
 </div>
 
 <script>
@@ -70,7 +71,8 @@
 
         pets.forEach(pet => {
             petDivContent += `
-            <div class="rounded bg-teal-200 overflow-hidden shadow-lg">
+            <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+                <div class="rounded bg-teal-200 overflow-hidden shadow-lg">
                     <img class="w-full" src="/img/card-top.jpg" alt="pet-name">
                         <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2">Owner Name - ${pet.owner}</div>
@@ -85,7 +87,8 @@
                                     <span
                                         class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">🎂 ${formatDate(pet.birthday)}</span>
                         </div>
-            </div>                
+                </div>
+            </div>               
             `
         });
 
