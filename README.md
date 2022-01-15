@@ -9,3 +9,7 @@ They will be asked to upload a picture *TBD* and label their account according t
 Further integrations *TBD*: Breed? Location? etc.
 
 Utilizing Weather API / Google API to help locate and plan meet-ups and more.
+
+ESLint settings sourced from https://github.com/nickgraffis/eslint Copyright (c) 2022 Nick Graffis
+
+
