@@ -67,13 +67,24 @@
                 id="path5" />
               </g>
           </svg>
-        <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">PetFinder</span>
+        <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">Looking For Pets</span>
       </a>
       <ul class="flex items-center sm:hidden space-x-8 lg:flex">
         <!-- top nav links as follows: What Is PetFinder > info.handlebars  Find a Pet > find.handlebars  Looking to Adopt? > placeholder "coming soon" -->
-        <li><a href="/info" aria-label="AboutPetFinder" title="AboutPetFinder" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">What Is PetFinder?</a></li>
+        <li><a href="/info" aria-label="AboutLFP" title="AboutLFP" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">What Is Looking For Pets?</a></li>
         <li><a href="/find" aria-label="FindPet" title="FindPet" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Find A Pet</a></li>
         <li><a href="/adoption" aria-label="Adoption" title="Adoption" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Looking to Adopt?</a></li>
+        {{#if logged_in}}
+         <li>
+          <a
+            href="/logout"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            aria-label="Log In"
+            title="Log Out">
+            Log Out
+          </a>
+        </li>
+        {{else}}
         <li>
           <a
             href="/login"
@@ -83,6 +94,16 @@
             Log In
           </a>
         </li>
+        <li>
+          <a
+            href="/register"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            aria-label="Log In"
+            title="Log In">
+            Sign Up
+          </a>
+        </li>
+        {{/if}}
       </ul>
       <!-- Mobile menu -->
       <div class="lg:hidden">

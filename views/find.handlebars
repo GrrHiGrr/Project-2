@@ -70,10 +70,11 @@
 
         let petDivContent = ""
 
-        pets.forEach(pet => {
+        pets.forEach((pet,i) => {
             petDivContent += `
-                <div class="max-w-sm rounded flex-1 shadow-lg bg-teal-400 -mx-3 mb-6">
-                    <img class="w-full" src="https://i.imgur.com/AMAw5EK.png" alt="pet-name">
+            <div style="display:flex; justify-content:center;">
+                <div style="width: 50%" class="max-w-sm rounded shadow-lg bg-teal-400 -mx-3 mb-6">
+                    <img class="w-full" id="pet-img${i}"  src="https://i.imgur.com/AMAw5EK.png" alt="pet-name">
                         <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2">Owner Name - ${pet.owner}</div>
                         </div>
@@ -88,11 +89,22 @@
                                         class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">🎂 ${formatDate(pet.birthday)}</span>
                         </div>
                 </div>
-            </div>               
+            </div>       
+            </div>        
             `
         });
 
         document.querySelector(".petcards-container").innerHTML = petDivContent;
+    const baseURL = "https://api.giphy.com/v1/gifs/search?api_key=76dB8vpOsmsFW92C7CyM0B6wnUT2JvPn&q=";
+    //lookup append images async
+    pets.forEach(({species}, i)=> {
+        fetch("https://api.giphy.com/v1/gifs/search?api_key=76dB8vpOsmsFW92C7CyM0B6wnUT2JvPn&q="+species)
+        .then(res => res.json())
+        .then(({data})=> {
+            console.log("IMG URL ", data[0]?.images?.original_still?.url)
+            document.querySelector(`#pet-img${i}`).setAttribute("src", data[0]?.images?.original_still?.url);
+        })
+    })
     };
 
     

@@ -14,13 +14,14 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const pets = petData.map((project) => pet.get({ plain: true }));
+    const pets = petData.map((pet) => pet.get({ plain: true }));
 
     res.render('homepage', { 
       pets, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -124,5 +125,11 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+router.get('/logout', (req,res)=> {
+  req.session.destroy(()=> {
+    res.redirect("/")
+  })
+})
 
 module.exports = router;
