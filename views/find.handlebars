@@ -101,8 +101,9 @@
         fetch("https://api.giphy.com/v1/gifs/search?api_key=76dB8vpOsmsFW92C7CyM0B6wnUT2JvPn&q="+species)
         .then(res => res.json())
         .then(({data})=> {
-            console.log("IMG URL ", data[0]?.images?.original_still?.url)
-            document.querySelector(`#pet-img${i}`).setAttribute("src", data[0]?.images?.original_still?.url);
+            const index = Math.floor(Math.random()* data.length)
+            console.log("IMG URL ", data[index]?.images?.original_still?.url)
+            document.querySelector(`#pet-img${i}`).setAttribute("src", data[index]?.images?.original_still?.url);
         })
     })
     };
